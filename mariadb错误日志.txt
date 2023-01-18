@@ -1,0 +1,45 @@
+[root@ecs-maridb ~]# systemctl status mariadb
+¡ñ mariadb.service - MariaDB database server
+   Loaded: loaded (/usr/lib/systemd/system/mariadb.service; disabled; vendor preset: disabled)
+   Active: failed (Result: exit-code) since Mon 2022-11-28 09:53:11 CST; 2min 8s ago
+  Process: 1377 ExecStartPost=/usr/libexec/mariadb-wait-ready $MAINPID (code=exited, status=1/FAILURE)
+  Process: 1376 ExecStart=/usr/bin/mysqld_safe --basedir=/usr (code=exited, status=1/FAILURE)
+  Process: 1341 ExecStartPre=/usr/libexec/mariadb-prepare-db-dir %n (code=exited, status=0/SUCCESS)
+ Main PID: 1376 (code=exited, status=1/FAILURE)
+
+Nov 28 09:53:10 ecs-maridb mariadb-prepare-db-dir[1341]: install: cannot create regular file ¡®/var/log/mysq¡­enied
+Nov 28 09:53:10 ecs-maridb mariadb-prepare-db-dir[1341]: Database MariaDB is probably initialized in /var/l...ne.
+Nov 28 09:53:10 ecs-maridb mysqld_safe[1376]: 221128 09:53:10 mysqld_safe Logging to '/var/log/mysqld.log'.
+Nov 28 09:53:10 ecs-maridb mysqld_safe[1376]: 221128 09:53:10 mysqld_safe Starting mysqld daemon with data...ysql
+Nov 28 09:53:10 ecs-maridb mysqld_safe[1376]: [92B blob data]
+Nov 28 09:53:10 ecs-maridb systemd[1]: mariadb.service: main process exited, code=exited, status=1/FAILURE
+Nov 28 09:53:11 ecs-maridb systemd[1]: mariadb.service: control process exited, code=exited status=1
+Nov 28 09:53:11 ecs-maridb systemd[1]: Failed to start MariaDB database server.
+Nov 28 09:53:11 ecs-maridb systemd[1]: Unit mariadb.service entered failed state.
+Nov 28 09:53:11 ecs-maridb systemd[1]: mariadb.service failed.
+Hint: Some lines were ellipsized, use -l to show in full.
+
+[root@ecs-maridb ~]# cat /etc/my.cnf
+[mysqld]
+join_buffer_size = 128M
+sort_buffer_size = 2M
+read_rnd_buffer_size = 2M
+
+# Disabling symbolic-links is recommended to prevent assorted security risks
+lower_case_table_names = 1
+innodb_strict_mode = 1
+sql_mode =
+symbolic-links=0
+character_set_server = utf8
+log-bin = mysql-bin
+binlog_format=row
+server-id = 2
+expire_logs_days = 10
+slave_skip_errors = 1062
+log_slave_updates = 1
+
+[mysqld_safe]
+log-error=/var/log/mysqld.log
+pid-file=/var/run/mysqld/mysqld.pid
+[root@ecs-maridb ~]# 
+
