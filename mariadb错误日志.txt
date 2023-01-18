@@ -1,5 +1,7 @@
+20230118-test edit
+
 [root@ecs-maridb ~]# systemctl status mariadb
-¡ñ mariadb.service - MariaDB database server
+Â¡Ã± mariadb.service - MariaDB database server
    Loaded: loaded (/usr/lib/systemd/system/mariadb.service; disabled; vendor preset: disabled)
    Active: failed (Result: exit-code) since Mon 2022-11-28 09:53:11 CST; 2min 8s ago
   Process: 1377 ExecStartPost=/usr/libexec/mariadb-wait-ready $MAINPID (code=exited, status=1/FAILURE)
@@ -7,7 +9,7 @@
   Process: 1341 ExecStartPre=/usr/libexec/mariadb-prepare-db-dir %n (code=exited, status=0/SUCCESS)
  Main PID: 1376 (code=exited, status=1/FAILURE)
 
-Nov 28 09:53:10 ecs-maridb mariadb-prepare-db-dir[1341]: install: cannot create regular file ¡®/var/log/mysq¡­enied
+Nov 28 09:53:10 ecs-maridb mariadb-prepare-db-dir[1341]: install: cannot create regular file Â¡Â®/var/log/mysqÂ¡Â­enied
 Nov 28 09:53:10 ecs-maridb mariadb-prepare-db-dir[1341]: Database MariaDB is probably initialized in /var/l...ne.
 Nov 28 09:53:10 ecs-maridb mysqld_safe[1376]: 221128 09:53:10 mysqld_safe Logging to '/var/log/mysqld.log'.
 Nov 28 09:53:10 ecs-maridb mysqld_safe[1376]: 221128 09:53:10 mysqld_safe Starting mysqld daemon with data...ysql
